@@ -1,5 +1,5 @@
 env:
-  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 name: provider docs build
 on:
@@ -72,5 +72,3 @@ jobs:
           author_name: pulumi-bot
           author_email: "bot@pulumi.com"
           cwd: docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
