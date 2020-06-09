@@ -5,7 +5,7 @@ name: provider docs build
 on:
   repository_dispatch:
     types:
-      - provider
+      - tfgen-provider
 jobs:
   pull-request:
     runs-on: ubuntu-latest
