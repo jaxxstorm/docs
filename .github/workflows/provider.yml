@@ -1,3 +1,6 @@
+env:
+  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+
 name: provider docs build
 on:
   repository_dispatch:
