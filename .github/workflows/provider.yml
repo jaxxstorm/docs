@@ -4,7 +4,22 @@ on:
     types:
       - provider
 jobs:
-  provider-docs-build:
+  pull-request:
+    runs-on: ubuntu-latest
+    needs: build-tfgen-provider-docs
+    steps:
+      - uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "${{ github.event.client_payload.project-shortname }}/${{ github.run_id }}-${{ github.run_number }}"
+          destination_branch: "master"
+          pr_title: "Regen docs ${{ github.event.client_payload.project-shortname }}@${{ github.event.client_payload.ref }}"
+          pr_body: ""
+          pr_label: "automation/tfgen-provider-docs"
+          github_token: ${{ secrets.PULUMI_BOT_TOKEN }}
+
+  build-tfgen-provider-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
